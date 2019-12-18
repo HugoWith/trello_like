@@ -1,15 +1,18 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  # include LogValidationErrors
-
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
 
   has_many :projects
   has_many :teams
+  has_many :meetings
 
-def attempt_set_password(params)
+
+  # new function to set the password without knowing the current
+  # password used in our confirmation controller.
+  def attempt_set_password(params)
     p = {}
     p[:password] = params[:password]
     p[:password_confirmation] = params[:password_confirmation]

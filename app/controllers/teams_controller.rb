@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:edit, :update, :destroy]
 
   # GET /teams
   # GET /teams.json
@@ -11,12 +11,15 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @meetings = Meeting.all
+    # Team.where('id = ?', current_user.team_id)
   end
 
   # GET /teams/new
   def new
     @team = current_user.teams.build
-    @user =current_user
+    @user = current_user
+
   end
 
   # GET /teams/1/edit
@@ -28,7 +31,6 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     @team.users << current_user
-
 
     respond_to do |format|
       if @team.save
@@ -73,6 +75,6 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:name, users_attributes: [:id, :name, :email, :_destroy] )
+      params.require(:team).permit(:name, users_attributes: [:id, :name, :email, :_destroy])
     end
 end
