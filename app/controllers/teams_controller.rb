@@ -11,8 +11,8 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @meetings = Meeting.all
-    # Team.where('id = ?', current_user.team_id)
+
+    Team.where('id = ?', current_user.team_id)
   end
 
   # GET /teams/new
