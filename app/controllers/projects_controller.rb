@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @team = current_user.team
+    @team = current_user.teams
   end
 
   # POST /projects
