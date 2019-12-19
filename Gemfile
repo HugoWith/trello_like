@@ -32,6 +32,7 @@ gem 'gravatar_image_tag', '~> 1.2'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'simple_form', '~> 5.0', '>= 5.0.1'
 gem 'bulma-rails', '~> 0.8.0'
+gem 'acts_as_list', '~> 1.0'
 # gem 'image_processing', '~> 0.2.3'
 
 # Reduces boot times through caching; required in config/boot.rb
